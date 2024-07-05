@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, Text, View } from 'react-native';
+import { SafeAreaView, Text, View, TouchableOpacity } from 'react-native';
 import '../styles.css';
-import { Compass, Map } from 'lucide-react-native';
+import { Compass, Map, TowerControl } from 'lucide-react-native';
+import { SideBar } from './components/SideBar';
 // import { SideBar } from './components/SideBar';
 
 export default function App() {
@@ -9,21 +10,17 @@ export default function App() {
     <>
       <SafeAreaView>
         <View className={'flex flex-row w-screen h-screen'}>
-          <View className={"bg-slate-500 h-screen"}>
-            <MenuItem>
-              <Compass size={30} color={'white'} />
-              <Text className={"text-white font-medium text-sm text-center"}>
-                Planner
-              </Text>
-            </MenuItem>
-            <MenuItem>
-              <Map size={30} color={'white'} />
-              <Text className={"text-white font-medium text-sm text-center"}>
-                Map
-              </Text>
-            </MenuItem>
-          </View>
-          <View>
+          {/* Sidebar section */}
+          <SideBar path="home"/>
+          <View className='flex-row items-start'>
+          
+            {/* Description section */}
+            <View className='h-screen bg-slate-400'>
+              <View className='flex flex-row justify-between p-4'>
+                <Text className='font-semibold'>Search airport</Text>
+              </View>
+            </View>
+
             <Text className={"text-4xl font-semibold"} >
               Dashboard Flight Report
             </Text>
@@ -33,12 +30,3 @@ export default function App() {
     </>
   );
 }
-
-
-const MenuItem = ({children}) => {
-  return (
-    <View className='flex items-center'>
-      {children}
-    </View>
-  )
-} 
